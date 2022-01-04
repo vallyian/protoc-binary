@@ -36,14 +36,14 @@ require("protoc-binary").protoc(
 ### `binary`
 
 ```js
-/** Returns the absolute path to local protoc binary */
+/* Returns the absolute path to local protoc binary */
 require("protoc-binary").binary;
 ```
 
 ### `version`
 
 ```js
-/** Returns version of local protoc binary version */
+/* Returns version of local protoc binary version */
 require("protoc-binary").version;
 ```
 
