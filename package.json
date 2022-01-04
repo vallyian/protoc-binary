@@ -12,7 +12,7 @@
   ],
   "version": "1.0.0",
   "author": "vallyien@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/vallyian/protoc-binary.git"
