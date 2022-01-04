@@ -43,7 +43,7 @@ require("protoc-binary").binary;
 ### `version`
 
 ```js
-/* Returns version of local protoc binary version */
+/* Returns version of local protoc binary */
 require("protoc-binary").version;
 ```
 

@@ -13,7 +13,7 @@ module.exports = Object.freeze({
     /** Absolute path to local protoc binary */
     binary: consts.binary,
 
-    /** Version of local protoc binary version, or empty string */
+    /** Version of local protoc binary, or empty string */
     get version() { return getBinaryVersion(); },
 
     protoc
