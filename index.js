@@ -22,7 +22,7 @@ module.exports = Object.freeze({
 /**
  * Function wrapper for protoc binary
  * @param {string[]} args protoc arguments
- * @param {string} protoDir [optional] absolute path to dir containing *.proto files
+ * @param {string} protoDir [optional] absolute path to dir containing .proto files
  */
 function protoc(args, protoDir = process.cwd()) {
     childProcess.execSync([consts.binary, ...args].join(" "), {
