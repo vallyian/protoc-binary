@@ -10,7 +10,7 @@
     "protoc",
     "binary"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "vallyien@gmail.com",
   "license": "MIT",
   "repository": {
@@ -29,6 +29,7 @@
   },
   "files": [
     "consts.js",
+    "index.d.ts",
     "index.js",
     "install.js"
   ]
