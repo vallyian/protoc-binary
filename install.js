@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
-const unzip = require("extract-zip");
+const extract = require("extract-zip");
 const consts = require("./consts");
 const index = require("./index");
 
@@ -24,7 +24,7 @@ const binaryZipRx = new RegExp(`\/protoc-(.*)-${consts.binaryZip}`);
     if (!fs.existsSync(zip))
         throw Error(`binary "${consts.binaryZip} not downloaded"`);
 
-    await unzip(zip, { dir: consts.protocDir });
+    await unzip(zip, consts.protocDir);
     if (!fs.existsSync(consts.binary))
         throw Error(`binary "${consts.binary} not unzipped"`);
 
@@ -33,6 +33,35 @@ const binaryZipRx = new RegExp(`\/protoc-(.*)-${consts.binaryZip}`);
 
     console.log(`downloaded protoc v${index.version}`);
 })();
+
+async function unzip(zip, dir) {
+    const MAX_FILES = 1_000;
+    const MAX_SIZE = 10_000_000; // 10 MB
+    const THRESHOLD_RATIO = 10;
+
+    let fileCount = 0;
+    let totalSize = 0;
+
+    await extract(zip, {
+        dir,
+        onEntry: entry => {
+            fileCount++;
+            if (fileCount > MAX_FILES)
+                throw 'Reached max. number of files';
+
+            let entrySize = entry.uncompressedSize;
+            totalSize += entrySize;
+            if (totalSize > MAX_SIZE)
+                throw 'Reached max. size';
+
+            if (entry.compressedSize > 0) {
+                let compressionRatio = entrySize / entry.compressedSize;
+                if (compressionRatio > THRESHOLD_RATIO)
+                    throw 'Reached max. compression ratio';
+            }
+        }
+    });
+}
 
 async function getVersionInfo() {
     let version = getRequestedVersion();
