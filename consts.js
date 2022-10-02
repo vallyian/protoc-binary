@@ -8,13 +8,16 @@ const binaryZip = {
     "win32-x64": "win64.zip"
 }[process.platform + "-" + process.arch];
 
-const binaryUrl = "https://api.github.com/repos/protocolbuffers/protobuf/releases/latest"
+const latestReleaseUrl = "https://api.github.com/repos/protocolbuffers/protobuf/releases/latest"
+const downloadUrlTemplate = `https://github.com/protocolbuffers/protobuf/releases/download/v{version}/protoc-{version}-${binaryZip}`
+
 const protocDir = path.join(__dirname, "./protoc");
 const binary = path.join(protocDir, "bin", `protoc${process.platform === "win32" ? ".exe" : ""}`);
 
 module.exports = Object.freeze({
     binaryZip,
-    binaryUrl,
+    latestReleaseUrl,
+    downloadUrlTemplate,
     protocDir,
     binary
 });

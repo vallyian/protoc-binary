@@ -1,36 +1,36 @@
 {
-  "name": "protoc-binary",
-  "description": "Downloads latest Google Protocol Buffers binary wrapped as npm package",
-  "keywords": [
-    "download",
-    "latest",
-    "google",
-    "protocol",
-    "buffers",
-    "protoc",
-    "binary"
-  ],
-  "version": "1.0.1",
-  "author": "vallyien@gmail.com",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vallyian/protoc-binary.git"
-  },
-  "main": "index.js",
-  "scripts": {
-    "postinstall": "node install"
-  },
-  "dependencies": {
-    "extract-zip": "latest"
-  },
-  "bin": {
-    "protoc": "index.js"
-  },
-  "files": [
-    "consts.js",
-    "index.d.ts",
-    "index.js",
-    "install.js"
-  ]
+    "name": "protoc-binary",
+    "description": "Downloads latest Google Protocol Buffers binary wrapped as npm package",
+    "keywords": [
+        "download",
+        "latest",
+        "google",
+        "protocol",
+        "buffers",
+        "protoc",
+        "binary"
+    ],
+    "version": "1.0.1",
+    "author": "vallyien@gmail.com",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vallyian/protoc-binary.git"
+    },
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "node install"
+    },
+    "dependencies": {
+        "extract-zip": "latest"
+    },
+    "bin": {
+        "protoc": "index.js"
+    },
+    "files": [
+        "consts.js",
+        "index.d.ts",
+        "index.js",
+        "install.js"
+    ]
 }

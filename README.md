@@ -1,6 +1,8 @@
 # protoc-binary
 
-Downloads latest Google Protocol Buffers binary wrapped as npm package.  
+Downloads Google Protocol Buffers binary wrapped as npm package.  
+By default, it will download the latest released version.  
+If an older version is required, add `"protoc-binary": "x.x.x"` at the root of your package.json.
 
 ## Install
 
