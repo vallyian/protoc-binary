@@ -32,11 +32,13 @@ function protoc(args, protoDir = process.cwd()) {
 }
 
 function getBinaryVersion() {
+    if (!fs.existsSync(consts.binary)) return "";
+    let std;
     try {
-        return fs.existsSync(consts.binary)
-            ? childProcess.execFileSync(consts.binary, ["--version"]).toString().match(/libprotoc\s(.*)\s*$/)[1]
-            : "";
+        std = childProcess.execFileSync(consts.binary, ["--version"]).toString();
     } catch (ex) {
-        return "";
+        std = "";
     }
+    std = std.replace("libprotoc ");
+    return /[0-9.]/.test(std) ? std : "";
 }
