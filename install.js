@@ -47,17 +47,17 @@ async function unzip(zip, dir) {
         onEntry: entry => {
             fileCount++;
             if (fileCount > MAX_FILES)
-                throw 'Reached max. number of files';
+                throw Error('Reached max. number of files');
 
             let entrySize = entry.uncompressedSize;
             totalSize += entrySize;
             if (totalSize > MAX_SIZE)
-                throw 'Reached max. size';
+                throw Error('Reached max. size');
 
             if (entry.compressedSize > 0) {
                 let compressionRatio = entrySize / entry.compressedSize;
                 if (compressionRatio > THRESHOLD_RATIO)
-                    throw 'Reached max. compression ratio';
+                    throw Error('Reached max. compression ratio');
             }
         }
     });
