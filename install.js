@@ -63,7 +63,7 @@ function getRequestedVersion() {
         if (requestedVersion || !dir.includes("node_modules"))
             break;
         dir = path.normalize(path.join(dir, ".."));
-    };
+    }
     return requestedVersion || "";
 }
 
