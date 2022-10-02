@@ -25,9 +25,10 @@ module.exports = Object.freeze({
  * @param {string} protoDir [optional] absolute path to dir containing .proto files
  */
 function protoc(args, protoDir = process.cwd()) {
-    childProcess.execSync([consts.binary, ...args].join(" "), {
+    childProcess.execFileSync(consts.binary, ...args, {
         stdio: "inherit",
-        cwd: protoDir
+        cwd: protoDir,
+        shell: false
     });
 }
 
@@ -39,6 +40,6 @@ function getBinaryVersion() {
     } catch (ex) {
         std = "";
     }
-    std = std.replace("libprotoc ");
+    std = std.replace("libprotoc ", "");
     return /[0-9.]/.test(std) ? std : "";
 }
