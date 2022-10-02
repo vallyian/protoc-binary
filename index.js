@@ -25,7 +25,7 @@ module.exports = Object.freeze({
  * @param {string} protoDir [optional] absolute path to dir containing .proto files
  */
 function protoc(args, protoDir = process.cwd()) {
-    childProcess.execSync([consts.binary].concat(args).join(" "), {
+    childProcess.execFileSync(consts.binary, args, {
         stdio: "inherit",
         cwd: protoDir,
         shell: false
