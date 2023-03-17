@@ -1,6 +1,7 @@
 const path = require("path");
 
 const binaryZip = {
+    "darwin-arm64": "aarch_64.zip",
     "darwin-x64": "osx-x86_64.zip",
     "linux-x32": "linux-x86_32.zip",
     "linux-x64": "linux-x86_64.zip",
