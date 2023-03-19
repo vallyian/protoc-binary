@@ -53,6 +53,7 @@ require("protoc-binary").version;
 
 See official [protoc binaries](https://api.github.com/repos/protocolbuffers/protobuf/releases/latest) download page.
 
+* osx-aarch_64.zip
 * osx-x86_64.zip
 * linux-x86_32.zip
 * linux-x86_64.zip
