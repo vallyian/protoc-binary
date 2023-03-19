@@ -14,10 +14,17 @@ const downloadUrlTemplate = `https://github.com/protocolbuffers/protobuf/release
 const protocDir = path.join(__dirname, "./protoc");
 const binary = path.join(protocDir, "bin", `protoc${process.platform === "win32" ? ".exe" : ""}`);
 
+const safeUnzip = Object.freeze({
+    MAX_FILES: 1_000,
+    MAX_SIZE: 20_000_000, // 20 MB
+    THRESHOLD_RATIO: 10
+});
+
 module.exports = Object.freeze({
     binaryZip,
     latestReleaseUrl,
     downloadUrlTemplate,
     protocDir,
-    binary
+    binary,
+    safeUnzip
 });
