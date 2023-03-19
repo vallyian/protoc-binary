@@ -11,11 +11,15 @@
         "binary"
     ],
     "version": "1.2.0",
-    "author": "vallyien@gmail.com",
+    "author": "vallyian@gmail.com",
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/vallyian/protoc-binary.git"
+    },
+    "engines": {
+        "node": ">=14",
+        "npm": ">=6"
     },
     "main": "index.js",
     "scripts": {

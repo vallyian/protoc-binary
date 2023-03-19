@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const https = require("https");
+const fs = require("node:fs");
+const path = require("node:path");
+const https = require("node:https");
 const extract = require("extract-zip");
 const consts = require("./consts");
 const index = require("./index");
@@ -35,10 +35,6 @@ const binaryZipRx = new RegExp(`\/protoc-(.*)-${consts.binaryZip}`);
 })();
 
 async function unzip(zip, dir) {
-    const MAX_FILES = 1_000;
-    const MAX_SIZE = 10_000_000; // 10 MB
-    const THRESHOLD_RATIO = 10;
-
     let fileCount = 0;
     let totalSize = 0;
 
@@ -46,17 +42,17 @@ async function unzip(zip, dir) {
         dir,
         onEntry: entry => {
             fileCount++;
-            if (fileCount > MAX_FILES)
+            if (fileCount > consts.safeUnzip.MAX_FILES)
                 throw Error('Reached max. number of files');
 
             let entrySize = entry.uncompressedSize;
             totalSize += entrySize;
-            if (totalSize > MAX_SIZE)
+            if (totalSize > consts.safeUnzip.MAX_SIZE)
                 throw Error('Reached max. size');
 
             if (entry.compressedSize > 0) {
                 let compressionRatio = entrySize / entry.compressedSize;
-                if (compressionRatio > THRESHOLD_RATIO)
+                if (compressionRatio > consts.safeUnzip.THRESHOLD_RATIO)
                     throw Error('Reached max. compression ratio');
             }
         }
