@@ -57,5 +57,6 @@ See official [protoc binaries](https://api.github.com/repos/protocolbuffers/prot
 * osx-x86_64.zip
 * linux-x86_32.zip
 * linux-x86_64.zip
+* linux-arm64.zip
 * win32.zip
 * win64.zip

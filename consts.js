@@ -5,6 +5,7 @@ const binaryZip = {
     "darwin-x64": "osx-x86_64.zip",
     "linux-x32": "linux-x86_32.zip",
     "linux-x64": "linux-x86_64.zip",
+    "linux-arm64": "linux-aarch_64.zip",
     "win32-x32": "win32.zip",
     "win32-x64": "win64.zip"
 }[process.platform + "-" + process.arch];
